@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import theme from "../../constants/theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,8 +8,8 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    color: "#212121",
-    fontSize: 18,
+    color: theme.colors.textColor,
+    fontSize: theme.fontSize.large,
   },
   subtitle: {
     fontSize: 16,
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create({
     maxWidth: "80%",
     alignItems: "center",
     paddingVertical: 20,
+    marginTop: 20,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -25,5 +27,11 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 15,
     paddingHorizontal: 25,
+  },
+  input: {
+    width: 40,
+    textAlign: "center",
+    fontSize: theme.fontSize.xLarge,
+    height: 60,
   },
 });
