@@ -3,6 +3,7 @@ import { View, SafeAreaView, ActivityIndicator } from "react-native";
 import { Header } from "./components/index";
 import StartGame from "./screens/start-game/index";
 import GameScreen from "./screens/game-screen/index";
+import GameOver from "./screens/game-over/index";
 import { useFonts } from "expo-font";
 import { styles } from "./styles";
 import theme from "./constants/theme";
@@ -17,19 +18,39 @@ export default function App() {
     "open-sans-italic": require("./assets/fonts/OpenSans-Italic.ttf"),
   });
   const [userNumber, setUserNumber] = useState();
-
+  const [guessRounds, setGuessRounds] = useState(0);
   if (!loaded) {
     return <ActivityIndicator size="large" color={theme.colors.primary} />;
   }
 
+  const handleGameOver = (rounds) => {
+    setGuessRounds(rounds);
+  };
+
+  const handleRestarGame = () => {
+    setGuessRounds(0);
+    setUserNumber(null);
+  };
+
   const onStartGame = (selectedNumber) => {
     setUserNumber(selectedNumber);
+    setGuessRounds(0);
   };
 
   let content = <StartGame onStartGame={onStartGame} />;
 
-  if (userNumber) {
-    content = <GameScreen userOptions={userNumber} />;
+  if (userNumber && guessRounds <= 0) {
+    content = (
+      <GameScreen userOptions={userNumber} onGameOver={handleGameOver} />
+    );
+  } else if (guessRounds > 0) {
+    content = (
+      <GameOver
+        rounds={guessRounds}
+        choise={userNumber}
+        onRestart={handleRestarGame}
+      />
+    );
   }
   return (
     <SafeAreaView style={styles.container}>
