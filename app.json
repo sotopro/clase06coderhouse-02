@@ -3,7 +3,7 @@
     "name": "clase06coderhouse-02",
     "slug": "clase06coderhouse-02",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

@@ -4,6 +4,9 @@ import theme from "../../constants/theme";
 const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
+  containerGeneric: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: "center",
